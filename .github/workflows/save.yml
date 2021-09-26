@@ -1,4 +1,4 @@
-name: build & Sync Amazon S3
+name: save
 
 on:
   schedule:
