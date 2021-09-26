@@ -37,7 +37,6 @@ jobs:
           date=`date '+%d'`
           savepath="images/cam_KEIO-line_upper/$year/$month/$date/$now.jpg"
           url="https://www.ktr.mlit.go.jp/keihin/webcam/cam_KEIO-line_upper.jpg?${now}"
-          commitmessage="画像を保存 ${now}"
           mkdir -p "images"
           mkdir -p "images/cam_KEIO-line_upper"
           mkdir -p "images/cam_KEIO-line_upper/${year}"
@@ -47,7 +46,7 @@ jobs:
           git config --local user.email "info@laboneko.jp"
           git config --local user.name "labeneko"
           git add .
-          git commit -m $commitmessage -a || true
+          git commit -m "画像を保存 ${now}" -a || true
       - name: Push changes
         uses: ad-m/github-push-action@master
         with:
