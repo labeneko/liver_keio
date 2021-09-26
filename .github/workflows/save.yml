@@ -47,7 +47,7 @@ jobs:
           git config --local user.email "info@laboneko.jp"
           git config --local user.name "labeneko"
           git add .
-          git commit -m commitmessage -a || true
+          git commit -m $commitmessage -a || true
       - name: Push changes
         uses: ad-m/github-push-action@master
         with:
