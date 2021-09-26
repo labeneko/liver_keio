@@ -1,9 +1,12 @@
 name: save
 
 on:
+  push:
+    branches:
+      - main
   schedule:
     - cron: '*/10 * * * *'
-
+  workflow_dispatch:
 jobs:
   build:
     runs-on: ubuntu-latest
