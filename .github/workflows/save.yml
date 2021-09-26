@@ -44,6 +44,8 @@ jobs:
           mkdir -p "images/cam_KEIO-line_upper/${year}/${month}"
           mkdir -p "images/cam_KEIO-line_upper/${year}/${month}/${date}"
           curl -o $savepath $url
+          git config --local user.email "info@laboneko.jp"
+          git config --local user.name "labeneko"
           git add .
           git commit -m commitmessage -a || true
       - name: Push changes
