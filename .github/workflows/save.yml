@@ -31,10 +31,10 @@ jobs:
         run: yarn install
       - name: Commit files
         run: |
-          now=`TZ=-9 date '+%Y%m%d%H%M'`
-          year=`TZ=-9 date '+%Y'`
-          month=`TZ=-9 date '+%m'`
-          date=`TZ=-9 date '+%d'`
+          now=`TZ=Asia/Tokyo date '+%Y%m%d%H%M'`
+          year=`TZ=Asia/Tokyo date '+%Y'`
+          month=`TZ=Asia/Tokyo date '+%m'`
+          date=`TZ=Asia/Tokyo date '+%d'`
           savepath="images/cam_KEIO-line_upper/$year/$month/$date/$now.jpg"
           url="https://www.ktr.mlit.go.jp/keihin/webcam/cam_KEIO-line_upper.jpg?${now}"
           mkdir -p "images"
