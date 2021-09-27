@@ -41,6 +41,14 @@ jobs:
           mkdir -p "images/cam_KEIO-line_upper/${year}/${month}"
           mkdir -p "images/cam_KEIO-line_upper/${year}/${month}/${date}"
           curl -o $savepath $url
+          savepath2="images/cam_sekido-bridge_lower/$year/$month/$date/$now.jpg"
+          url2="https://www.ktr.mlit.go.jp/keihin/webcam/cam_sekido-bridge_lower.jpg?${now}"
+          mkdir -p "images"
+          mkdir -p "images/cam_sekido-bridge_lower"
+          mkdir -p "images/cam_sekido-bridge_lower/${year}"
+          mkdir -p "images/cam_sekido-bridge_lower/${year}/${month}"
+          mkdir -p "images/cam_sekido-bridge_lower/${year}/${month}/${date}"
+          curl -o $savepath2 $url2
           git config --local user.email "info@laboneko.jp"
           git config --local user.name "labeneko"
           git add .
