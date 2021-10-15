@@ -27,7 +27,7 @@ jobs:
           ssh-keyscan github.com >> ~/.ssh/known_hosts
       - name: install
         run: yarn install
-      - name: Commit files
+      - name: commit
         run: |
           now=`TZ=Asia/Tokyo date '+%Y%m%d%H%M'`
           year=`TZ=Asia/Tokyo date '+%Y'`
@@ -40,8 +40,18 @@ jobs:
           mkdir -p "images/${year}/${month}"
           mkdir -p "images/${year}/${month}/${date}"
           curl -o $savepath $url
-          echo "keihin00778/$savepath" >> "images/24h.txt"
-          echo "keihin00778/$savepath" >> "images/${year}/${month}/${date}/images.txt"
+          currentmd5=`md5sum $savepath | awk '{ print $1 }'`
+          previousimagepath=`tail -n 1 images/24h.txt`
+          previousimagepath="${previousimagepath//keihin00160\//}"
+          previousmd5=`md5sum ${previousimagepath} | awk '{ print $1 }'`
+          echo $currentmd5
+          echo $previousmd5
+          if [[ $currentmd5 != $previousmd5 ]]; then tail -n 143 images/24h.txt >> images/24hp.txt; fi
+          if [[ $currentmd5 != $previousmd5 ]]; then cp images/24hp.txt images/24h.txt; fi
+          if [[ $currentmd5 != $previousmd5 ]]; then rm images/24hp.txt; fi
+          if [[ $currentmd5 != $previousmd5 ]]; then echo "keihin00160/$savepath" >> "images/24h.txt"; fi
+          if [[ $currentmd5 != $previousmd5 ]]; then echo "keihin00160/$savepath" >> "images/${year}/${month}/${date}/images.txt"; fi
+          if [[ $currentmd5 == $previousmd5 ]]; then rm $savepath ; fi
           git config --local user.email "info@laboneko.jp"
           git config --local user.name "labeneko"
           git add .
