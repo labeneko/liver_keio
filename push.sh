@@ -1,4 +1,4 @@
-cd /home/ec2-user/daimaru
+cd /home/ec2-user/liver_keio
 git pull
 TZ=Asia/Tokyo date '+%Y%m%d%H%M' > time.txt
 git add .
